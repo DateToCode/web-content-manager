@@ -1,0 +1,13 @@
+{
+  "login": {
+    "request": {
+      "body": {},
+      "params": {},
+      "headers": {}
+    },
+    "response": {
+      "body": {},
+      "status": 1
+    }
+  }
+}

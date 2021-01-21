@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Switch } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext";
-import LoginPage from "../pages/login";
+import Home from "../pages/Home";
+import { AuthRouter } from "./AuthRouter";
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
 
 type AppRouterProps = {};
 
@@ -10,7 +13,17 @@ const AppRouter: React.FC<AppRouterProps> = () => {
 
   return (
     <Switch>
-      <Route path="/" component={LoginPage} />
+      <PublicRoute
+        isAuthenticated={auth.authenticated}
+        path="/auth"
+        component={AuthRouter}
+      />
+      <PrivateRoute
+        isAuthenticated={auth.authenticated}
+        path="/"
+        component={Home}
+      />
+      <Redirect to="/auth" />
     </Switch>
   );
 };

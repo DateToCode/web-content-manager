@@ -1,14 +1,23 @@
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import React from "react";
-import { Route, Switch } from "react-router-dom";
 import { AuthProvider } from "./auth/AuthContext";
-import LoginPage from "./pages/login";
 import AppRouter from "./router/AppRouter";
+
+//import Theme from "./theme/Theme";
 
 function App() {
   return (
-    <AuthProvider>
-      <AppRouter />
-    </AuthProvider>
+    <ThemeProvider
+      theme={createMuiTheme({
+        palette: {
+          type: "dark",
+        },
+      })}
+    >
+      <AuthProvider>
+        <AppRouter />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
