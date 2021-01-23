@@ -32,7 +32,19 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%",
+    padding: "24px",
+    boxSizing: "border-box",
     maxWidth: "500px",
+    "& > *": {
+      margin: "12px 0 !important",
+    },
+  },
+  button: {
+    fontWeight: "bold",
+  },
+  link: {
+    color: theme.palette.primary.main,
+    textDecoration: "none",
   },
 }));
 
@@ -84,6 +96,8 @@ const LoginPage: React.FC<LoginPageProps> = () => {
               ),
             }}
           />
+        </Grid>
+        <Grid item xs={12}>
           <TextField
             type="password"
             fullWidth
@@ -106,18 +120,22 @@ const LoginPage: React.FC<LoginPageProps> = () => {
               ),
             }}
           />
-
-          <Button
-            type="submit"
-            color="primary"
-            variant="contained"
-            fullWidth
-            onClick={handleSubmit}
-          >
-            LOG IN
-          </Button>
-          <Link to="/reset-password">
-            <Typography variant="body1">Resetear contraseña</Typography>
+        </Grid>
+        <Button
+          type="submit"
+          color="primary"
+          variant="contained"
+          fullWidth
+          onClick={handleSubmit}
+          className={classes.button}
+        >
+          LOG IN
+        </Button>
+        <Grid item xs={12}>
+          <Link to="/auth/forgot-password" className={classes.link}>
+            <Typography variant="body1" align="right">
+              Resetear contraseña
+            </Typography>
           </Link>
         </Grid>
       </form>
